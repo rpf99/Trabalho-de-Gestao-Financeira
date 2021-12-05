@@ -1,10 +1,10 @@
 "# Trabalho-de-Gestao-Financeira" 
 
 
-##Autor: Rodrigo Franco
+## Autor: Rodrigo Franco
 
 
-"#Requisitos utilizados"
+"## Requisitos utilizados"
 
 
 1 Express(https://expressjs.com/)
