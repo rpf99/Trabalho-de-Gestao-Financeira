@@ -1,0 +1,50 @@
+<%- contentFor('body') %>
+
+
+<main class="form_signup">
+
+    <form method="post" action="<%=options.url%>">
+
+
+        <% if(error){ %>
+            <div class='alert alert-danger'> <%=error%> </div>
+        <% } %>
+
+
+        <h2> <%=options.title%> </h2>
+
+
+        <% if(!options.selected){ %>
+
+                <div class="form-floating">
+             
+                    <input  type="text"  class="form-control" placeholder="name" 
+                            id="formName"  name="name">
+                
+                        <label for="formName">name</label>
+                </div>
+        <% } %>
+    
+        
+        <div class="form-floating">
+
+            <% if(options.selected){ %>
+
+                    <input  type="text"  class="form-control" placeholder="value" 
+                            id="formValue"  name="value"
+                            value="<%= options.selected.value %>">
+            <% }else{ %>
+
+                    <input  type="text"  class="form-control" placeholder="value" 
+                            id="formValue"  name="value">
+            <% } %>
+
+                <label for="formEvenueName">value</label>
+        </div>
+        
+
+        <button class="btn btn-primary" type="submit"><%= options.buttonName%></button>
+        
+    </form>
+
+</main>

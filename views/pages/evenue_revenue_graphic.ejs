@@ -1,0 +1,160 @@
+<% contentFor('body') %>
+
+
+<canvas id="myLineChart" width="300" height="150"></canvas> 
+
+
+<div class='evenues_revenues_tables'>
+
+
+    <table class="table-sm table-bordered">
+
+        <caption class="caption-top"> Maiores Despesas </caption>
+        
+
+        <thead class="border-dark">
+            <th scope="col">  Data de Realização  </th>
+            <th scope="col">  Nome  </th>
+            <th scope="col">  Valor da Despesa  </th>
+        </thead>
+
+        
+        <tbody class="border-dark">
+
+            <% lastEvenues.forEach(ev =>{ %>
+                <tr>
+                    <td>
+                        <%= ev.createdAt.getDate()%>/<%= ev.createdAt.getMonth()+1%>/<%= ev.createdAt.getFullYear()%>
+                        
+                        (<%= ev.createdAt.getHours()%>:<%= ev.createdAt.getMinutes()%>:<%= ev.createdAt.getSeconds()%>)
+                    </td>
+
+                    <td> <%= ev.name %> </td>
+                    <td> <%= ev.value %> </td>
+                </tr>
+            <% }) %>
+        </tbody>
+
+    </table>
+
+
+
+    <table class="table-sm table-bordered">
+
+        <caption class="caption-top"> Maiores Receitas </caption>
+ 
+
+        <thead class="border-dark">
+                <th scope="col">Data de Realização</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor da Receita</th>
+        </thead>
+        
+
+        <tbody class="border-dark">
+
+                <% lastRevenues.forEach(rv =>{ %>   
+                    <tr>
+                        <td> 
+                            <%= rv.createdAt.getDate()%>/<%= rv.createdAt.getMonth()+1%>/<%= rv.createdAt.getFullYear()%> 
+                            (<%= rv.createdAt.getHours()%>:<%= rv.createdAt.getMinutes()%>:<%= rv.createdAt.getSeconds()%>)
+                        </td>
+
+                        <td> <%= rv.name %> </td>
+                        <td> <%= rv.value %> </td>
+                    </tr>
+                <% }) %>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+
+
+
+<script>
+
+    Chart.defaults.font.size = 15;
+    
+    let chart = new Chart( document.getElementById('myLineChart'), {
+    
+        type: 'line',
+
+        data:{
+
+            datasets:[
+                {
+                    label:'Despesas',
+                    backgroundColor:'rgb(255,0,0)',
+                    borderColor:'rgb(255,0,0)',
+                    data:[]      
+                },
+
+                {
+                    label:'Receitas',
+                    backgroundColor:'rgb(0,180,0)',
+                    borderColor:'rgb(0,180,0)',
+                    data:[]        
+                },
+            ]
+        },
+
+        options:{
+
+            scales:{
+    
+                x:{
+                    type:'time',
+
+                    time: {
+                        unit:'day',
+                        displayFormats: {  'day':'DD/MM/YYYY'  }
+                    },
+                },
+
+                y:{
+                    suggestedMin:0,
+                },
+            }}
+    })
+
+
+
+    fetch('/Graphic/GetValues', {method:'POST'}).then(
+
+        function(response){ return response.json() }
+
+    ).then( function(data){
+            
+        
+        for(let e of data.evPos){
+
+            const formatData = e.x.split('/')
+               
+            chart.data.datasets[0].data.push({
+                x:new Date(parseInt(formatData[2]), parseInt(formatData[1]), parseInt(formatData[0])),
+                y: parseFloat(e.y)
+            })
+        }
+        
+        for(let r of data.rvPos){
+               
+            const formatData = r.x.split('/')
+                
+            chart.data.datasets[1].data.push({
+                x:new Date(parseInt(formatData[2]), parseInt(formatData[1]), parseInt(formatData[0])),
+                y: parseFloat(r.y)
+            })
+        }
+   
+        chart.update()
+    })
+
+
+</script>

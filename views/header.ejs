@@ -1,0 +1,28 @@
+<header class='navbar  navbar-expand-md  fixed-top bg-dark'>
+
+    <% if(!user){ %>
+
+        <div class='col-sm-4'>
+            <a class='navbar-brand' href="/signup">Cadastrar</a>
+        </div>
+
+        <div class='col-sm-4 text-center'>
+            <a class='navbar-brand' href="/home">Gestao Financeira </a>
+        </div>
+
+        <div class='col-sm-4 offset-3'>
+            <a class='navbar-brand' href="/login">Entrar</a>
+        </div>  
+
+    <% }else{ %>
+ 
+        <div class='col-sm-8 offset-2 text-center'>
+            <a class='navbar-brand' href="/home">Bem vindo <%= user.name %></a>
+        </div>
+
+        <div class='col-sm-4 offset-1'>
+            <a class='navbar-brand' href="/login">Entrar</a>
+        </div>  
+    <% } %>
+
+</header>

@@ -1,0 +1,44 @@
+<%- contentFor('body') %>
+
+<main class="form_signup">
+
+
+    <form method="post" action="/login">
+    
+
+        <% if(error){ %>
+                
+                <div class="alert alert-danger"> <%= error %> </div>
+
+        <% }else if(msg && !error){ %>
+                
+                <div class="alert alert-info"> <%= msg %> </div>
+        <% } %>
+
+
+        <h2>Entre no Sistema</h2>
+
+
+            <div  class="form-floating">
+
+                    <input  class="form-control" type="text" placeholder="email" 
+                            name="email" id="floatingEmailLogin">
+
+                    <label for="floatingEmailLogin">email</label>
+            </div>
+
+
+
+            <div  class="form-floating">
+
+                    <input  class="form-control" type="password" placeholder="password"
+                            name="password" id="floatingPasswordLogin">
+
+                    <label for="floatingPasswordLogin">password</label>
+            </div>
+
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Acessar</button>
+    </form>
+
+</main>

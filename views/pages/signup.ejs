@@ -1,0 +1,95 @@
+<%- contentFor('body') %>
+
+<main class="form_signup">
+
+    
+    <form method="post" action="/signup">
+        
+
+        <% if(error){ %>
+                <div class="alert alert-danger"> <%= error %> </div>
+        <% } %>
+
+
+        <h2>Criar Nova Conta</h2>
+        
+        
+            <div  class="form-floating">
+            
+                <% if(values){ %>
+
+                    <input  class='form-control'  type="text"  id="floatingName" 
+                            name="name"  placeholder="name"
+                            value="<%= values.name %>">
+
+                <% }else{ %>
+
+                    <input  class='form-control'  type="text"  id="floatingName" 
+                            name="name"  placeholder="name">
+                <% } %>
+
+                    <label for="floatingName">name</label>
+            </div>
+            
+
+
+            <div class="form-floating">
+     
+                <% if(values){ %>
+
+                    <input  class="form-control"  type="email"  id="floatingEmail"
+                            name="email"  placeholder="email"
+                            value="<%= values.email %>">
+
+                <% }else{ %>
+
+                    <input  class="form-control"  type="email"  id="floatingEmail"
+                            name="email"  placeholder="email">
+                <% } %>
+        
+                    <label for="floatingEmail">email</label>
+            </div>
+    
+
+            
+            <div class="form-floating">
+
+                <% if(values){ %>
+
+                    <input  class="form-control"  type="password"  id="floatingPassword"
+                            name="password"  placeholder="password"
+                            value="<%= values.password %>">
+
+                <% }else{ %>
+
+                    <input  class="form-control"  type="password"  id="floatingPassword"
+                            name="password"  placeholder="password">
+                <% } %>
+               
+                    <label for="floatingPassword">password</label>
+            </div>
+
+
+
+            <div class="form-floating">
+
+                <% if(values){ %>
+
+                    <input  class="form-control"  type="password"  id="floatingConfirm"
+                            name="confirm"  placeholder="confirm"
+                            value="<%= values.confirm %>">
+
+                <% }else{ %>
+
+                    <input  class="form-control"  type="password"  id="floatingConfirm"
+                            name="confirm"  placeholder="confirm">
+                <% } %>
+               
+                    <label for="floatingConfirm">confirm</label>
+            </div>
+            
+            
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Criar</button>
+    </form>
+
+</main>

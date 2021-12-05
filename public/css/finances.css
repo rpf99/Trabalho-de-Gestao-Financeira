@@ -1,0 +1,88 @@
+.div_scrollbar{
+    height: 160px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: auto;
+}
+
+.table{
+    font-size: 20px;
+}
+
+.table-sm{
+    text-align: center;
+    display: inline-table;
+    margin-left: 20px;
+}
+
+.evenues_revenues_tables{
+    margin: auto;
+    width: fit-content;
+    font-size: 1.2rem;
+}
+
+.caption-top{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
+
+
+.form_title{
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+    width: fit-content;
+}
+
+
+.form_menu{
+    align-self: center;
+    margin: 100px 400px 100px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+
+.nav-item{
+    margin-left: 20px;
+}
+
+.btn{
+    font-size: 1.2rem;
+}
+
+.navbar-brand{
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    width: fit-content;
+}
+
+
+#myLineChart{
+    margin: 80px 20px 40px;
+}
+
+
+.form_signup{
+    width: 100%;
+    max-width: 480px;
+    padding: 90px;
+    margin: auto;
+    text-align: center;
+}
+
+
+.form_signup [type="text"]{
+    margin-bottom: 15px;
+}
+
+.form_signup [type="password"]{
+    margin-bottom: 15px;
+}
+
+.form_signup [type="email"]{
+    margin-bottom: 15px;
+}

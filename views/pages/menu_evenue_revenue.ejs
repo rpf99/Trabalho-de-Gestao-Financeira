@@ -1,0 +1,66 @@
+<% contentFor('body') %>
+
+
+    <div class="form_signup">
+            <h3><%=mainD.title%></h3>
+
+            <a class="btn btn-primary" href="<%=mainD.insertLink%>"> <%=mainD.insertButtonName%> </a>
+    </div>
+
+
+    <div class="div_scrollbar">
+
+        <table class="table table-bordered">
+
+            <thead class="border-dark">
+                <th scope="col"> Data </th>
+                <th scope="col"> Nome </th>
+                <th scope="col"> Valor </th>
+                <th scope="col"> Opções </th>
+            </thead>
+        
+            <tbody class="border-dark">
+
+                <% if(mainD.list){ %>
+
+                    <% mainD.list.forEach(item =>{ %>
+
+                        <tr>
+                            <td> 
+                                <%=item.createdAt.getDate()%>/<%=item.createdAt.getMonth()+1%>/<%=item.createdAt.getFullYear()%>
+                            </td>
+                        
+                            <td>  <%=item.name%>  </td>
+                            <td>  <%=item.value%> </td>
+        
+                            <td>
+                                <a class="btn btn-primary" 
+                                   href= "<%=mainD.updateLink%>/<%=item.id%>">Autalizar</a>
+
+                                <a class="btn btn-danger" onclick="RemocaoPorId(`<%=item.id%>`)">Remover</a>
+                            </td>
+                        </tr>
+
+                    <% }) %>
+                <% } %>
+        
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+
+<script>
+
+    function RemocaoPorId(id) {
+    
+        if( confirm(`Gostaria de remover essa <%= mainD.atributo %>`) ){
+
+            fetch(`<%=mainD.removeLink%>/${id}`, {method:"POST"})
+
+            .then( function(response){ document.location.reload() } )
+        }}
+
+</script>

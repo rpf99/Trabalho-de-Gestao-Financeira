@@ -1,0 +1,11 @@
+<%- contentFor('body') %>
+
+<% if(user){ %>
+
+    <%- include('../partials/options.ejs') %>
+
+<% }else{ %>
+
+    <%- include('../partials/intro.ejs') %>
+
+<% } %>
